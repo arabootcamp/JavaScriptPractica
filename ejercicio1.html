@@ -49,7 +49,9 @@
     <script>
         //Function
         function validateForm() {
-            let pattern = /^[a-z\u00f1À-ÿ]+[a-z\u00f1À-ÿ\r\n\s]*$/gim;
+
+           //Si me encuentro con algo que no sea letras, espacio o salto de linea entonces es no valido
+            let pattern = /[^a-z\u00f1À-ÿ\r\n\s]/gim;
             let name = document.getElementById('nombre').value;
             let subject = document.getElementById('asunto').value;
             let msj = document.getElementById('mensaje').value;
@@ -57,11 +59,11 @@
             let result = document.getElementsByClassName('resultado');
 
             pattern.lastIndex = 0;
-            p[0].innerHTML = (pattern.test(name)) ? '' : 'El mensaje es requerido';
+            p[0].innerHTML = (pattern.test(name)) ? 'El mensaje es requerido' : '';
             pattern.lastIndex = 0;
-            p[1].innerHTML = (pattern.test(subject)) ? '' : 'El mensaje es requerido';
+            p[1].innerHTML = (pattern.test(subject)) ? 'El mensaje es requerido' : '';
             pattern.lastIndex = 0;
-            p[2].innerHTML = (pattern.test(msj)) ? '' : 'El mensaje es requerido';
+            p[2].innerHTML = (pattern.test(msj)) ? 'El mensaje es requerido' : '';
 
             result[0].innerHTML = (p[0].innerHTML == 0 & p[1].innerHTML == 0 & p[2].innerHTML == 0) ?
                 'Mensaje enviado con éxito!!!' : '';
