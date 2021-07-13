@@ -59,11 +59,11 @@
             let result = document.getElementsByClassName('resultado');
 
             pattern.lastIndex = 0;
-            p[0].innerHTML = (pattern.test(name)) ? 'El mensaje es requerido' : '';
+            p[0].innerHTML = (pattern.test(name) | name=='') ? 'El mensaje es requerido' : '';
             pattern.lastIndex = 0;
-            p[1].innerHTML = (pattern.test(subject)) ? 'El mensaje es requerido' : '';
+            p[1].innerHTML = (pattern.test(subject) | subject=='') ? 'El mensaje es requerido' : '';
             pattern.lastIndex = 0;
-            p[2].innerHTML = (pattern.test(msj)) ? 'El mensaje es requerido' : '';
+            p[2].innerHTML = (pattern.test(msj) | msj=='') ? 'El mensaje es requerido' : '';
 
             result[0].innerHTML = (p[0].innerHTML == 0 & p[1].innerHTML == 0 & p[2].innerHTML == 0) ?
                 'Mensaje enviado con éxito!!!' : '';
