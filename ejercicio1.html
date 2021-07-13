@@ -47,26 +47,24 @@
         </div>
     </div>
     <script>
-        // Escríbe aquí tu código
         //Function
         function validateForm() {
-            //si encuentro algo distinto a letras, letras acentuadas, espacio o salto de linea, entonces hay error    
-            let pattern = /[^a-z\u00f1À-ÿ\s\r\n]+/im;
-            let name = document.getElementById('nombre');
-            let subject = document.getElementById('asunto');
-            let msj = document.getElementById('mensaje')
+            let pattern = /^[a-z\u00f1À-ÿ]+(\s* [a-z\u00f1À-ÿ\r\n]+)*$/gim;
+            let name = document.getElementById('nombre').value;
+            let subject = document.getElementById('asunto').value;
+            let msj = document.getElementById('mensaje').value;
             let p = document.getElementsByTagName('p');
             let result = document.getElementsByClassName('resultado');
-         
 
-            p[0].innerHTML = pattern.test(name.value) ? 'El mensaje es requerido' : '';
-            p[1].innerHTML = pattern.test(subject.value) ? 'El mensaje es requerido' : '';
-            p[2].innerHTML = pattern.test(msj.value) ? 'El mensaje es requerido' : '';
+            pattern.lastIndex = 0;
+            p[0].innerHTML = (pattern.test(name)) ? '' : 'El mensaje es requerido';
+            pattern.lastIndex = 0;
+            p[1].innerHTML = (pattern.test(subject)) ? '' : 'El mensaje es requerido';
+            pattern.lastIndex = 0;
+            p[2].innerHTML = (pattern.test(msj)) ? '' : 'El mensaje es requerido';
 
-            if (p[0].innerHTML == '' & p[1].innerHTML == '' & p[2].innerHTML == '') 
-                result[0].innerHTML = 'Mensaje enviado con exito!!!';
-            else 
-                result[0].innerHTML = '';
+            result[0].innerHTML = (p[0].innerHTML == 0 & p[1].innerHTML == 0 & p[2].innerHTML == 0) ?
+                'Mensaje enviado con éxito!!!' : '';
         }
         //Main
         let form = document.getElementById('formulario');
