@@ -49,7 +49,7 @@
     <script>
         //Function
         function validateForm() {
-            let pattern = /^[a-z\u00f1À-ÿ]+(\s* [a-z\u00f1À-ÿ\r\n]+)*$/gim;
+            let pattern = /^[a-z\u00f1À-ÿ]+[a-z\u00f1À-ÿ\r\n\s]*$/gim;
             let name = document.getElementById('nombre').value;
             let subject = document.getElementById('asunto').value;
             let msj = document.getElementById('mensaje').value;
